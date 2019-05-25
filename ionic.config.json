@@ -1,5 +1,7 @@
 {
   "name": "newUPay",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

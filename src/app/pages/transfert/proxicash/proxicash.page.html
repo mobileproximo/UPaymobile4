@@ -1,0 +1,19 @@
+<app-header></app-header>
+<ion-content>
+        <div class="p-container">
+                <header-title></header-title>
+                <div class="ion-padding p-container-view">
+                  <p class="p-img-top logo-proxicash"></p>
+                  <div *ngIf="!glb.showRecu">
+                     <envoi  [dataenvoi]="dataenvoi"></envoi>
+<!--                      <reception *ngIf="service=='Réception'" [datareception]="datareception"></reception>
+ -->
+                   </div>
+                  <div *ngIf="glb.showRecu">
+                     <recu-transfert></recu-transfert>
+                   </div>
+                </div>
+              </div>
+              <scroll></scroll>
+            
+</ion-content>
