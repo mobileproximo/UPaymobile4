@@ -63,7 +63,7 @@ export class ConnexionPage implements OnInit {
 
   getPermission() {
     this.platform.ready().then((readySource) => {
-          this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.READ_SMS).then(
+/*           this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.READ_SMS).then(
       result => {
 
         // alert('Has permission? ' +JSON.stringify(result))
@@ -87,7 +87,7 @@ export class ConnexionPage implements OnInit {
 
         });
       }
-    );
+    ); */
           this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.READ_PHONE_STATE).then(
       result => {
 
