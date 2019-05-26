@@ -33,7 +33,6 @@ export class ServiceService {
     this.loading = true;
     return await this.loadingCtrl.create({
       message: 'Veuillez patienter ...',
-      duration: 5000,
       spinner: 'lines-small',
       cssClass: 'custom-loader-class'
 
