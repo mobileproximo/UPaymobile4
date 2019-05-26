@@ -7,16 +7,20 @@ import { GlobaleVariableService } from 'src/app/service/globale-variable.service
   styleUrls: ['./proxicash.page.scss'],
 })
 export class ProxicashPage implements OnInit {
-  private dataenvoi: any = {};
-  private afficheenv = true;
+  public service;
+  public datareception: any = {};
+  public dataenvoi: any = {};
+  public afficheenv = true;
   constructor(public glb: GlobaleVariableService) { }
 
   ngOnInit() {
     this.glb.ShowPin = false;
     this.glb.showRecu = false;
     this.glb.recu = {};
-    this.dataenvoi.image = this.glb.IMAGE_BASE_URL + 'Icon-16.png';
-    this.dataenvoi.oper = '0052';
+    this.service = 'Envoi';
+    this.glb.recu = {};
+    this.datareception.image = this.dataenvoi.image = this.glb.IMAGE_BASE_URL + 'Icon-16.png';
+    this.datareception.oper = this.dataenvoi.oper = '0052';
     this.dataenvoi.operateur = 'ProxiCash';
     this.glb.HEADERTITELE.src = this.glb.IMAGE_BASE_URL + 'Petite-Icon-03.png';
     this.glb.HEADERTITELE.title = 'Transfert d\'argent';

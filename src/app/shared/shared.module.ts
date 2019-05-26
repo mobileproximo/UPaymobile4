@@ -15,11 +15,12 @@ import { EnvoiComponent } from '../components/envoi/envoi.component';
 import { RecuTransfertComponent } from '../components/recu-transfert/recu-transfert.component';
 import { RecuWoyofalComponent } from '../components/recu-woyofal/recu-woyofal.component';
 import { RecuEncaissementComponent } from '../components/recu-encaissement/recu-encaissement.component';
+import { ReceptionComponent } from '../components/reception/reception.component';
 
 @NgModule({
   declarations: [HeaderComponent, HeaderTitleComponent, FormatphonePipe,
                 ScrollComponent, RechargeComponent, MillierPipe,
-                CashinAvecReleveComponent, RecuRechargeComponent,
+                CashinAvecReleveComponent, RecuRechargeComponent, ReceptionComponent,
                 CodepinComponent, EnvoiComponent, RecuTransfertComponent, RecuWoyofalComponent, RecuEncaissementComponent],
   imports: [
     CommonModule, IonicModule, FormsModule, ReactiveFormsModule,
@@ -29,7 +30,7 @@ import { RecuEncaissementComponent } from '../components/recu-encaissement/recu-
             FormsModule,
             ReactiveFormsModule,
             CommonModule,
-            IonicModule, ScrollComponent, FormatphonePipe,
+            IonicModule, ScrollComponent, FormatphonePipe, ReceptionComponent,
             RechargeComponent, CashinAvecReleveComponent, MillierPipe, RecuWoyofalComponent, RecuEncaissementComponent,
             RecuRechargeComponent, CodepinComponent, EnvoiComponent, RecuTransfertComponent]
 })
