@@ -36,7 +36,7 @@ public OperatorsImages = [{codeoper: '0054', image: this.IMAGE_BASE_URL + 'emone
 // tslint:disable-next-line: max-line-length
                           {codeoper: '0053', image: this.IMAGE_BASE_URL + 'postecash.png', sousop: ''}, {codeoper: '0022', image: this.IMAGE_BASE_URL + 'logo_Tigo Cash.png', sousop: ''},
 // tslint:disable-next-line: max-line-length
-                          {codeoper: '0057', image: this.IMAGE_BASE_URL + 'wizall.png', sousop: ''}, {codeoper: '0016', image: this.IMAGE_BASE_URL + 'sde.png', sousop: ''},
+                          {codeoper: '0057', image: this.IMAGE_BASE_URL + 'wizall.png', sousop: ''}, {codeoper: '0016', image: this.IMAGE_BASE_URL + 'sde.png', sousop: ''}, {codeoper: '0034', image: this.IMAGE_BASE_URL + 'logo_Expresso.png', sousop: ''},
 // tslint:disable-next-line: max-line-length
                           {codeoper: '0027', image: this.IMAGE_BASE_URL + 'Petite-Icon-24.png', sousop: ''}, {codeoper: '0029', image: this.IMAGE_BASE_URL + 'woyofal.png', sousop: ''}, {codeoper: '0020', image: this.IMAGE_BASE_URL + 'tigo.png', sousop: ''},
 // tslint:disable-next-line: max-line-length

@@ -35,6 +35,8 @@ export class ReceptionComponent implements OnInit {
       adrsExp: ['', Validators.required],
       prenomBen: ['', Validators.required],
       nomBen: ['', Validators.required],
+      numBen: [''],
+      numExp: [''],
       telBen: ['', Validators.required],
       adrsBen: ['', Validators.required],
       typIdBen: ['', Validators.required],
@@ -64,8 +66,8 @@ export class ReceptionComponent implements OnInit {
     this.serv.afficheloading();
     this.serv.posts('transfert/releveRecepCash.php', parametre, {}).then(data => {
     this.serv.dismissloadin();
-
     const reponse = JSON.parse(data.data);
+  //  alert(JSON.stringify(reponse))
     if (reponse.returnCode === '0') {
       this.showdetails = true;
       this.cashoutForm.controls.prenomExp.setValue(reponse.prenomExp);
@@ -76,6 +78,10 @@ export class ReceptionComponent implements OnInit {
       this.cashoutForm.controls.nomBen.setValue(reponse.nomBen);
       this.cashoutForm.controls.adrsBen.setValue(reponse.adrsBen);
       this.cashoutForm.controls.telBen.setValue(reponse.telBen);
+      if (this.datareception.oper === '0052') {
+        this.cashoutForm.controls.numExp.setValue(reponse.numExp);
+        this.cashoutForm.controls.numBen.setValue(reponse.numBen);
+      }
       this.cashoutForm.controls.typIdBen.setValue('1');
       this.cashoutForm.controls.idBen.setValue('');
       this.cashoutForm.controls.mntPaie.setValue(this.monmillier.transform(reponse.mntPaie));
