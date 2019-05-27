@@ -66,7 +66,7 @@ export class HistoriquePage implements OnInit {
     this.serv.posts(url, parametre, {}).then(data => {
       this.serv.dismissloadin();
       const reponse: any = JSON.parse(data.data);
-      //alert(JSON.stringify(reponse));
+     // alert(JSON.stringify(reponse));
       if (reponse.returnCode === '0') {
         this.showdetails = true;
         if (mode === 'all') {
@@ -111,6 +111,9 @@ export class HistoriquePage implements OnInit {
             const codeoper = this.transactions[j].codeOper;
             if (codeoper === '0029') {
             this.transactions[j].Numc = this.transactions[j].IdDes;
+            }
+            if (typeof (this.transactions[j].Numc) === 'object') {
+              this.transactions[j].Numc = '';
             }
 
             this.transactions[j].label = this.serv.getLabelOperator(codeoper, sousop);

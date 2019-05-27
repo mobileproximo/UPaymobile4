@@ -41,7 +41,7 @@
             <ion-avatar slot="start">
               <img [src]="p.image">
             </ion-avatar>
-            <ion-label style="font-size:15px">{{p.label}}: {{p.Numc}}
+            <ion-label style="font-size:15px"><span *ngIf="p.Numc!=''">{{p.label}}: {{p.Numc}}</span>
               <p style="font-size:13px">Type: {{p.Type }}</p>
               <p style="font-size:10px">Date: {{p.datetrx }}</p>
               
