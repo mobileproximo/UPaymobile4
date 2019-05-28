@@ -94,7 +94,7 @@ export class ServiceService {
     } */
   }
   posts(service: string, body: any = {}, headers: any = {}): any {
-    if (!this.glb.ISCONNECTED) {
+    if (this.glb.ISCONNECTED === false) {
       this.showToast('Veuillez revoir votre connexion internet !');
       this.dismissloadin();
       return;

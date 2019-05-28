@@ -9,6 +9,7 @@ import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { MillierPipe } from 'src/app/pipes/millier.pipe';
 import { Sim } from '@ionic-native/sim/ngx';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 
 @Component({
   selector: 'app-connexion',
@@ -30,8 +31,9 @@ export class ConnexionPage implements OnInit {
               private monmillier: MillierPipe,
               private sim: Sim,
               private oneSignal: OneSignal,
+              public splashScreen: SplashScreen,
               public androidPermissions: AndroidPermissions) {
-    this.Userdata = this.formBuilder.group({
+                this.Userdata = this.formBuilder.group({
       login: ['', Validators.required],
       codepin: ['', Validators.required],
       confpin: ['', Validators.required],
@@ -41,6 +43,10 @@ export class ConnexionPage implements OnInit {
       idSim1: [''],
       idSim2: ['']
     });
+  }
+
+  ionViewDidEnter(){
+    this.splashScreen.hide();
   }
 
   ngOnInit() {

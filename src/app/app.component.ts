@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { GlobaleVariableService } from './service/globale-variable.service';
 import { ServiceService } from './service/service.service';
 import { Router } from '@angular/router';
+import { Network } from '@ionic-native/network/ngx';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ export class AppComponent {
     private serv: ServiceService,
     public navCtrl: NavController,
     public router: Router,
+    public network: Network,
     public alertController: AlertController
   ) {
     this.initializeApp();
@@ -32,7 +34,7 @@ export class AppComponent {
 
         this.glb.DATEPAUSE = new Date();
     });
-      this.splashScreen.hide();
+      /* this.splashScreen.hide(); */
 
       document.addEventListener('backbutton', () => {
           if (this.router.url === '/home') {
@@ -69,12 +71,24 @@ export class AppComponent {
       }, {
         text: 'oui',
         handler: () => {
-          navigator['app'].exitApp();
+          navigator.app.exitApp();
           console.log('Confirm Okay');
         }
       }]
     });
 
     await alert.present();
+  }
+  checkNetwork() {
+    this.network.onDisconnect().subscribe(() => {
+      this.serv.showToast('Vous n\'avez plus de connexion internet');
+      this.glb.ISCONNECTED = false;
+
+    });
+    this.network.onConnect().subscribe(() => {
+      this.serv.showToast('Vous êtes maintenant en ligne');
+      this.glb.ISCONNECTED = true;
+
+    });
   }
 }
