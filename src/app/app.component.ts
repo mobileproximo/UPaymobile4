@@ -71,7 +71,9 @@ export class AppComponent {
       }, {
         text: 'oui',
         handler: () => {
-          navigator.app.exitApp();
+
+// tslint:disable-next-line: no-string-literal
+          navigator['app'].exitApp();
           console.log('Confirm Okay');
         }
       }]
