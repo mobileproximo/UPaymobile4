@@ -34,6 +34,8 @@ export class AppComponent {
 
         this.glb.DATEPAUSE = new Date();
     });
+      this.checkNetwork();
+
       /* this.splashScreen.hide(); */
 
       document.addEventListener('backbutton', () => {
