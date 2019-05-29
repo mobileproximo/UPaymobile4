@@ -4,6 +4,7 @@ import { LoadingController, AlertController } from '@ionic/angular';
 import { GlobaleVariableService } from './globale-variable.service';
 import { HTTP } from '@ionic-native/http/ngx';
 import { MillierPipe } from '../pipes/millier.pipe';
+import { Network } from '@ionic-native/network/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ import { MillierPipe } from '../pipes/millier.pipe';
 export class ServiceService {
   loading = false;
   constructor(private alertCtrl: AlertController, private http: HTTP, public monmillier: MillierPipe,
-              private toast: Toast, public loadingCtrl: LoadingController, private glb: GlobaleVariableService) { }
+              private toast: Toast, public loadingCtrl: LoadingController, private glb: GlobaleVariableService,
+              private network: Network) { }
   showToast(message) {
     this.toast.showLongCenter(message).subscribe(value => {
       console.log(value);
@@ -30,20 +32,23 @@ export class ServiceService {
 
   }
   async afficheloading() {
-    this.loading = true;
-    return await this.loadingCtrl.create({
-      message: 'Veuillez patienter ...',
-      spinner: 'lines-small',
-      cssClass: 'custom-loader-class'
-
-    }).then(a => {
-      a.present().then(() => {
-        console.log('presented');
-        if (!this.loadingCtrl) {
-          a.dismiss().then(() => console.log('abort presenting'));
-        }
+   // this.checkNetwork();
+    if (this.glb.ISCONNECTED === true) {
+      this.loading = true;
+      return await this.loadingCtrl.create({
+        message: 'Veuillez patienter ...',
+        spinner: 'lines-small',
+        cssClass: 'custom-loader-class'
+      }).then(a => {
+        a.present().then(() => {
+          console.log('presented');
+          if (!this.loadingCtrl) {
+            a.dismiss().then(() => console.log('abort presenting'));
+          }
+        });
       });
-    });
+    }
+
   }
 
   async dismissloadin() {
@@ -94,10 +99,10 @@ export class ServiceService {
     } */
   }
   posts(service: string, body: any = {}, headers: any = {}): any {
+  /*   this.checkNetwork();*/
     if (this.glb.ISCONNECTED === false) {
       this.showToast('Veuillez revoir votre connexion internet !');
-      this.dismissloadin();
-      return;
+      return ;
     } else {
       const url = this.glb.BASEURL + service;
       console.log(headers);
@@ -105,9 +110,12 @@ export class ServiceService {
       console.log(body);
       this.http.setDataSerializer('json');
       this.http.setSSLCertMode('nocheck');
-     // this.http.setRequestTimeout(30);
+      // this.http.setRequestTimeout(60);
       return this.http.post(url, body, headers);
     }
+    
+    
+
 
   }
     showError(text: string= 'Erreur Non reconnue.Veuillez contacter le SUPPORT') {
@@ -218,5 +226,17 @@ verificationnumero(telephone: any) {
   const  numeroautorisé = ['77', '78', '70', '76'];
   const retour = numeroautorisé.indexOf(telephone.substring(0, 2));
   return retour === -1;
+}
+checkNetwork() {
+  this.network.onDisconnect().subscribe(() => {
+   // this.showToast('Vous n\'avez plus de connexion internet');
+    this.glb.ISCONNECTED = false;
+
+  });
+  this.network.onConnect().subscribe(() => {
+   // this.showToast('Vous êtes maintenant en ligne');
+    this.glb.ISCONNECTED = true;
+
+  });
 }
 }

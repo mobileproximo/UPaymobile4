@@ -45,7 +45,7 @@ export class ConnexionPage implements OnInit {
     });
   }
 
-  ionViewDidEnter(){
+  ionViewDidEnter() {
     this.splashScreen.hide();
   }
 
@@ -144,9 +144,9 @@ export class ConnexionPage implements OnInit {
     }
   }
   generateOTPCode() {
-    this.Userdata.controls.login.setValue('221' + this.Userdata.controls.login.value);
+   // this.Userdata.controls.login.setValue('221' + this.Userdata.controls.login.value);
     const userdata = this.Userdata.getRawValue();
-     // userdata.login = '221' + this.Userdata.controls.login.value;
+    userdata.login = '221' + this.Userdata.controls.login.value;
     this.serv.afficheloading();
     this.serv.posts('connexion/generateOTP.php', userdata, {}).then(data => {
       this.serv.dismissloadin();
@@ -196,6 +196,7 @@ export class ConnexionPage implements OnInit {
               numsim2: this.Userdata.controls.idSim2.value,
             });
             const params = this.Userdata.getRawValue();
+            params.login = params.login.substring(0, 3) !== '221' ? '221' + params.login : params.login;
            // alert(JSON.stringify(params));
             this.serv.afficheloading();
             this.serv.posts('connexion/connexion.php', params, {}).then(data => {
@@ -229,7 +230,7 @@ export class ConnexionPage implements OnInit {
               }
             }).catch(error => {
               this.serv.dismissloadin();
-              this.serv.showError('Impossible d\'atteindre le serveur ');
+              this.serv.showError('Impossible d\'atteindre le serveur ' + this.glb.ISCONNECTED);
 
             });
 
