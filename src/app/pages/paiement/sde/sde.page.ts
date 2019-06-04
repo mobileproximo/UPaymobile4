@@ -184,7 +184,7 @@ vider() {
     if (!this.listefactures[id].checked) {
 
         if (this.nombreFacture === 3) {
-          this.serv.showError('Désolé, Vous ne pouvez pas payez plus d\'une factures');
+          this.serv.showError('Désolé, Vous ne pouvez pas payez plus de 3 factures');
           console.log('id vaut ' + id);
           this.listefactures[id].checked = false;
           setTimeout(() => {
