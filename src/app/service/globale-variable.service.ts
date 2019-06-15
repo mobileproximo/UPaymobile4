@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class GlobaleVariableService {
   public showPin = false;
 public IMAGE_BASE_URL                 = 'assets/imgs/';
-public BASEURL                    = 'http://196.207.207.63:8080/upayMobile/';
+public BASEURL                    = 'http://10.20.1.33:8080/upayMobile/';
 public IDPART                         = '';
 public IDSESS                         = '';
 public IDTERM                         = '';
