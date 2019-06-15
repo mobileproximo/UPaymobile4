@@ -230,7 +230,7 @@ export class ConnexionPage implements OnInit {
               }
             }).catch(error => {
               this.serv.dismissloadin();
-              this.serv.showError('Impossible d\'atteindre le serveur ' + this.glb.ISCONNECTED);
+              this.serv.showError('Impossible d\'atteindre le serveur ');
 
             });
 
