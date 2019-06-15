@@ -152,7 +152,6 @@ export class ConnexionPage implements OnInit {
       this.serv.dismissloadin();
       const reponse = JSON.parse(data.data);
       if (reponse.returnCode === '0') {
-
         const navigationExtras: NavigationExtras = {
           state: {
             user: userdata
@@ -163,7 +162,7 @@ export class ConnexionPage implements OnInit {
 
     }).catch(err => {
       this.serv.dismissloadin();
-      this.serv.showError('Impossible d\'atteindre le serveur');
+      this.serv.showError('Impossible d\'atteindre le serveur ');
     });
 
 
@@ -203,14 +202,14 @@ export class ConnexionPage implements OnInit {
               this.serv.dismissloadin();
               const reponse = JSON.parse(data.data);
               console.log(JSON.stringify(reponse));
-             // alert('Connexion ' + JSON.stringify(reponse));
+              //alert('Connexion ' + JSON.stringify(reponse));
               if (reponse.returnCode === '0') {
                   this.glb.HEADER.agence = reponse.agence;
                   this.glb.IDPART = reponse.idPartn;
                   this.glb.IDSESS = reponse.idSession;
                   this.glb.IDTERM = reponse.idTerm;
                   this.glb.PRENOM = reponse.prenom;
-                  this.glb.PHONE = this.Userdata.controls.login.value;
+                  this.glb.PHONE = params.login;
                   this.glb.PHONE = this.glb.PHONE.substring(3);
                   this.glb.NOM = reponse.nom;
                   this.glb.PIN = reponse.pin;
