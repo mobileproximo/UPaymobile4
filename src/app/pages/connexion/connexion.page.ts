@@ -236,7 +236,7 @@ export class ConnexionPage implements OnInit {
 
 
           },
-          (err) => this.serv.showError('Impossible de récuperer les infos du téléphones')
+          (err) => this.serv.showError('Impossible de récuperer les infos du téléphone')
         );
       },
       () => this.serv.showError('Vous devez activer les autorisations')
