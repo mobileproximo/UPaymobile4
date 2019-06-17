@@ -14,11 +14,11 @@ export class MescodesPage implements OnInit {
   ngOnInit() {
     this.glb.ShowPin = false;
     this.glb.HEADERTITELE.src = this.glb.IMAGE_BASE_URL + 'Petite-Icon-06.png';
-    this.glb.HEADERTITELE.title = 'Voir mes Codes de Retrait';
+    this.glb.HEADERTITELE.title = 'Mes codes de retrait';
 
   }
   ionViewDidEnter(){
-/*     const parametres: any = {};
+    const parametres: any = {};
     parametres.idTerm = this.glb.IDTERM;
     parametres.session = this.glb.IDSESS;
     parametres.telephone = this.glb.PHONE;
@@ -39,6 +39,6 @@ export class MescodesPage implements OnInit {
       this.serv.dismissloadin();
       this.serv.showError('Impossible d\'atteindre le serveur');
 
-    }); */
+    });
   }
 }
