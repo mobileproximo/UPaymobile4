@@ -4,15 +4,17 @@
     <header-title></header-title>
     <div class="ion-padding p-container-view">
         <ion-list style="margin-bottom: 50px;">
-            <ion-item  detail-push="" *ngFor="let c of mesCodes">
-              <ion-avatar item-start>
-                <img  src="assets/imgs/wallet.png" onerror="this.src='assets/imgs/upay.png';"/>
-              </ion-avatar>
-              <h2 style="color: #639dd5;font-weight:bold;font-size: 20px;">{{c.code|formatcode:3:'-'}}</h2>
-              <p><b>Date &emsp; : </b><span style="color: #639dd5">{{c.date}}</span></p>
-              <p><b>Montant&emsp; : </b><span style="color: #639dd5">{{c.mnt|millier}}</span></p>
-           </ion-item>
-  
+        
+           <ion-item *ngFor="let c of mesCodes">
+            <ion-avatar slot="start">
+              <img src="assets/imgs/wallet.png" onerror="this.src='assets/imgs/upay.png';">
+            </ion-avatar>
+            <ion-label style="font-size:15px"><span >{{c.code|formatcode:3:'-'}}</span>
+              <p style="font-size:13px">Date: {{c.date}}</p>
+            </ion-label>
+            <span item-right style="font-size:14px"> {{c.mnt|millier}}Fcfa</span>
+          </ion-item>
         </ion-list>
+        
       </div>
 </ion-content>
