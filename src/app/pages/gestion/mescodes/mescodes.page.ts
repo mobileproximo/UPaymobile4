@@ -12,17 +12,16 @@ export class MescodesPage implements OnInit {
   constructor(public glb: GlobaleVariableService, public serv: ServiceService) { }
   public mesCodes: any = [];
   ngOnInit() {
-
-  }
-  ionViewDidEnter(){
     this.glb.ShowPin = false;
     this.glb.HEADERTITELE.src = this.glb.IMAGE_BASE_URL + 'Petite-Icon-06.png';
     this.glb.HEADERTITELE.title = 'Mes Codes de Retrait';
+
+  }
+  ionViewDidEnter(){
     const parametres: any = {};
     parametres.idTerm = this.glb.IDTERM;
     parametres.session = this.glb.IDSESS;
     parametres.telephone = this.glb.PHONE;
-
     this.serv.afficheloading();
     this.serv.posts('recharge/getcondesUpay.php', parametres, {}).then(data => {
       this.serv.dismissloadin();
