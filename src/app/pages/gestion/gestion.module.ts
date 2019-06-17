@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+import { Routes, RouterModule } from '@angular/router';
 
 import { GestionPage } from './gestion.page';
 import { MouvementPage } from './mouvement/mouvement.page';
@@ -28,7 +25,8 @@ const routes: Routes = [
   {
     path: 'codes',
     component: MescodesPage
-  },  {
+  },
+    {
     path: 'historique',
     component: HistoriquePage
   }

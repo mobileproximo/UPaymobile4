@@ -60,8 +60,8 @@ export class HomePage implements OnInit {
       souspages: [{nom: 'gestion/historique', icone: this.glb.IMAGE_BASE_URL + 'Petite-Icon-EtatMouvementCercle.png'},
                  // {nom: 'gestion/plafond', icone: this.glb.IMAGE_BASE_URL + 'etatplf.png'},
                   {nom: 'gestion/mouvement', icone: this.glb.IMAGE_BASE_URL + 'etatplf.png'},
-                  {nom: 'gestion/pin', icone: this.glb.IMAGE_BASE_URL + 'chpin.png'}/* ,
-                  {nom: 'gestion/codes', icone: this.glb.IMAGE_BASE_URL + 'wallet.png'} */] }
+                  {nom: 'gestion/pin', icone: this.glb.IMAGE_BASE_URL + 'chpin.png'} ,
+                  {nom: 'gestion/codes', icone: this.glb.IMAGE_BASE_URL + 'wallet.png'} ] }
 
      ];
 
