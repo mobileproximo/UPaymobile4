@@ -10,7 +10,7 @@ import { ServiceService } from 'src/app/service/service.service';
 export class MescodesPage implements OnInit {
 
   constructor(public glb: GlobaleVariableService, public serv: ServiceService) { }
-  private mesCodes: any = [];
+  public mesCodes: any = [];
   ngOnInit() {
 
   }
