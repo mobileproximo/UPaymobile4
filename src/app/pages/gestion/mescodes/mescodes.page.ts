@@ -12,6 +12,9 @@ export class MescodesPage implements OnInit {
   constructor(public glb: GlobaleVariableService, public serv: ServiceService) { }
   private mesCodes: any = [];
   ngOnInit() {
+
+  }
+  ionViewDidEnter(){
     this.glb.ShowPin = false;
     this.glb.HEADERTITELE.src = this.glb.IMAGE_BASE_URL + 'Petite-Icon-06.png';
     this.glb.HEADERTITELE.title = 'Mes Codes de Retrait';
@@ -39,5 +42,4 @@ export class MescodesPage implements OnInit {
 
     });
   }
-
 }

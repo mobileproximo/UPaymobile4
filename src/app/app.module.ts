@@ -27,13 +27,13 @@ import { OperatorImagePipe } from './pipes/operator-image.pipe';
 
 
 @NgModule({
-  declarations: [AppComponent, FormatdatePipe, FormatcodePipe, CoupurechainePipe, OperatorImagePipe],
+  declarations: [AppComponent, FormatdatePipe,  CoupurechainePipe, OperatorImagePipe],
   imports: [BrowserModule,  IonicModule.forRoot(), AppRoutingModule,  IonicStorageModule.forRoot()],
   providers: [
     StatusBar,
     SplashScreen,
     ServiceService,
-    Sim, MillierPipe, FormatphonePipe, AndroidPermissions, FormatcodePipe, FormatdatePipe, CoupurechainePipe,
+    Sim, MillierPipe, FormatphonePipe, AndroidPermissions,  FormatdatePipe, CoupurechainePipe,
     GlobaleVariableService, Toast,  HTTP, OneSignal, Network, OperatorImagePipe,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
