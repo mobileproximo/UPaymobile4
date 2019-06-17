@@ -2,21 +2,26 @@
 <ion-content >
   <div class="p-view-connexion list padding">  
     <div *ngIf="!glb.ShowPin">
-        <img class="p-img p-img-connexion" style="margin-top: 20px !important ;width:40% !important;" src="assets/imgs/upay.png" alt="logo">
-        <div padding="" style="margin-top: 10px">
+        <img class="p-img p-img-connexion" style="margin-top: 20px !important ;width:50% !important;" src="assets/imgs/upay.png" alt="logo">
+        <div padding="" style="margin-top: 5px">
           <form [formGroup]="Userdata">
             <div style="background-color: transparent !important;">
-                <div style="display: flex;">
+    <!--             <div style="display: flex;">
                     <div style="width: 130px">
-                        <!-- <selectpays ></selectpays> -->
+                       
                     </div>
                     <div style="flex: 1" class="field">
                         <input type="tel" style="border: none; border-bottom: 2px solid #639dd5; width: 100% !important; height:40px;" name="login" id="login" formControlName="login"  placeholder="Téléphone">
                         <label for="login" style="width: 100% !important;">Téléphone</label>
                     </div>
-                </div>
+                </div> -->
 
                 <div style="display: flex;flex-direction: column">
+                        <div style="flex: 1" class="field">
+                                <input type="tel" style="border: none; border-bottom: 2px solid #639dd5; width: 100% !important; height:40px;" name="login" id="login" formControlName="login"  placeholder="Téléphone">
+                                <label for="login" style="width: 100% !important;">Téléphone</label>
+                            </div>
+               
                     <div style="flex: 1" class="field">
                         <input type="text" style="border: none; border-bottom: 2px solid #639dd5; width: 100% !important; height:40px;" name="nom" id="nom" formControlName="nom"   placeholder="Votre nom">
                         <label for="nom" style="width: 100% !important;">Votre nom</label>
@@ -27,11 +32,11 @@
                     </div>
                     <div style="display: flex">
                         <div style="width:48%;margin-right: 4%;" class="field">
-                            <input type="password" maxlength="4" style="border: none; border-bottom: 2px solid #639dd5; width: 100%;  height:40px;" name="codepin" id="codepin" formControlName="codepin" (change)="verifConfPin()" (input)="verifConfPin()"  placeholder="Votre Code Pin">
-                            <label for="codepin" style="width: 100% !important;">Votre Code Pin</label>
+                            <input type="number" maxlength="4" style="-webkit-text-security:disc;border: none; border-bottom: 2px solid #639dd5; width: 100%;  height:40px;" name="codepin" id="codepin" formControlName="codepin" (change)="verifConfPin()" (input)="verifConfPin()"  placeholder="Votre Code Pin">
+                            <label for="codepin" style="width: 100% !important;">Code Pin</label>
                         </div>
                         <div style="width:48%;" class="field">
-                            <input type="password" maxlength="4" style="border: none; border-bottom: 2px solid #639dd5; width: 100% !important; height:40px;" name="confpin" id="confpin" formControlName="confpin" (change)="verifConfPin()" (input)="verifConfPin()" placeholder="Confirmer">
+                            <input type="number" maxlength="4" style="-webkit-text-security:disc;border: none; border-bottom: 2px solid #639dd5; width: 100% !important; height:40px;" name="confpin" id="confpin" formControlName="confpin" (change)="verifConfPin()" (input)="verifConfPin()" placeholder="Confirmer">
                             <label for="confpin" style="width: 100% !important;">Confirmer</label>
                         </div>
                     </div>

@@ -126,17 +126,31 @@ export class ConnexionPage implements OnInit {
 
   }
   verifConfPin() {
-    if (isNaN(this.Userdata.controls.codepin.value)) {
+
+    // console.log('pin ' + codepin)
+   // console.log('confpin ' + confpin)
+    if (this.Userdata.controls.codepin.value > 4) {
+      const val = this.Userdata.controls.codepin.value.toString();
+      this.Userdata.controls.codepin.setValue(val.substring(0, 4));
+    }
+    if (this.Userdata.controls.confpin.value > 4) {
+      const val = this.Userdata.controls.confpin.value.toString();
+      this.Userdata.controls.confpin.setValue(val.substring(0, 4));
+      }
+    const codepin = this.Userdata.controls.codepin.value;
+    const confpin = this.Userdata.controls.confpin.value;
+    if (isNaN(codepin)) {
       this.isconform = false;
       this.message = 'Le code pin doit etre composé  uniquement des chiffres';
     } else {
-      if (this.serv.CheckIfSequence(this.Userdata.controls.codepin.value)) {
+      if (this.serv.CheckIfSequence(codepin)) {
         this.isconform = false;
         this.message = 'Le code ne doit pas être consecutif ni composé d\'un même chiffre';
       } else {
-        this.isconform = this.Userdata.controls.codepin.value === this.Userdata.controls.confpin.value;
+        console.log('Mes pin sont pin1: ' + codepin + ' pin2: ' + confpin);
+        this.isconform = codepin === confpin;
         if (!this.isconform) {
-        this.message = 'Les codes pin saisi ne sont pas conformes';
+        this.message = 'Les codes pin saisis ne sont pas conformes';
         }
 
 
@@ -202,7 +216,7 @@ export class ConnexionPage implements OnInit {
               this.serv.dismissloadin();
               const reponse = JSON.parse(data.data);
               console.log(JSON.stringify(reponse));
-              //alert('Connexion ' + JSON.stringify(reponse));
+              // alert('Connexion ' + JSON.stringify(reponse));
               if (reponse.returnCode === '0') {
                   this.glb.HEADER.agence = reponse.agence;
                   this.glb.IDPART = reponse.idPartn;

@@ -20,15 +20,18 @@ export class ServiceService {
     });
   }
   CheckIfSequence(valeur: any) {
-    const tabNombres = valeur.split('');
-    const conditionA: boolean = (tabNombres[0] === tabNombres[1] && tabNombres[1] === tabNombres[2] && tabNombres[2] === tabNombres[3]);
-// tslint:disable-next-line: max-line-length
-    const conditionB: boolean = (tabNombres[0] * 1 + 1 === tabNombres[1] * 1 && tabNombres[1] * 1 + 1 === tabNombres[2] * 1 && tabNombres[2] * 1 + 1 === tabNombres[3] * 1);
-
-    if (conditionA || conditionB) {
-    return true;
+    if (valeur !== null) {
+      valeur = valeur.toString();
+      const tabNombres = valeur.split('');
+      const conditionA: boolean = (tabNombres[0] === tabNombres[1] && tabNombres[1] === tabNombres[2] && tabNombres[2] === tabNombres[3]);
+  // tslint:disable-next-line: max-line-length
+      const conditionB: boolean = (tabNombres[0] * 1 + 1 === tabNombres[1] * 1 && tabNombres[1] * 1 + 1 === tabNombres[2] * 1 && tabNombres[2] * 1 + 1 === tabNombres[3] * 1);
+      if (conditionA || conditionB) {
+      return true;
+      }
+      return false;
     }
-    return false;
+
 
   }
   async afficheloading() {
@@ -113,8 +116,8 @@ export class ServiceService {
       // this.http.setRequestTimeout(60);
       return this.http.post(url, body, headers);
     }
-    
-    
+
+
 
 
   }
