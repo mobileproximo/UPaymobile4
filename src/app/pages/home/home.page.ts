@@ -3,6 +3,7 @@ import { GlobaleVariableService } from 'src/app/service/globale-variable.service
 import { NavController } from '@ionic/angular';
 import { ServiceService } from 'src/app/service/service.service';
 import { MillierPipe } from 'src/app/pipes/millier.pipe';
+import { UpayWalletPage } from '../monnaie/upay-wallet/upay-wallet.page';
 
 @Component({
   selector: 'app-home',
@@ -52,7 +53,7 @@ export class HomePage implements OnInit {
                  {nom: 'monnaie/emoney', icone: this.glb.IMAGE_BASE_URL + 'emoney.png'},
                  {nom: 'monnaie/wizall', icone: this.glb.IMAGE_BASE_URL + 'wizall.png'},
                  {nom: 'monnaie/postcash', icone: this.glb.IMAGE_BASE_URL + 'postecash.png'},
-              //   {nom: UpayWalletPage, icone: this.glb.IMAGE_BASE_URL + 'logo_upay.jpg'}
+                 {nom: 'monnaie/upaywallet', icone: this.glb.IMAGE_BASE_URL + 'upay.png'}
                 ]
     },
        { title: 'Gestion',  src: this.glb.IMAGE_BASE_URL + 'Petite-Icon-06.png', expanded: false,
