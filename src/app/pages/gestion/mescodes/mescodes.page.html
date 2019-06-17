@@ -9,8 +9,8 @@
             <ion-avatar slot="start">
               <img src="assets/imgs/wallet.png" onerror="this.src='assets/imgs/upay.png';">
             </ion-avatar>
-            <ion-label style="font-size:15px"><span >{{c.code|formatcode:3:'-'}}</span>
-              <p style="font-size:13px">Date: {{c.date}}</p>
+            <ion-label style="font-size:15px;font-weight:bold;"><span >{{c.code|formatcode:3:'-'}}</span>
+              <p style="font-size:13px">{{c.date}}</p>
             </ion-label>
             <span item-right style="font-size:14px"> {{c.mnt|millier}}Fcfa</span>
           </ion-item>
