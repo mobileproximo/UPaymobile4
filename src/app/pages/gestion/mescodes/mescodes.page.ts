@@ -40,6 +40,7 @@ export class MescodesPage implements OnInit {
     this.glb.ShowPin = true;
     } else {
       this.showcodes = false;
+      this.glb.HEADERTITELE.title = 'Voir mes codes de retrait';
     }
 
   }
