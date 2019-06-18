@@ -41,6 +41,7 @@ export class MescodesPage implements OnInit {
     } else {
       this.showcodes = false;
       this.glb.HEADERTITELE.title = 'Voir mes codes de retrait';
+      this.iconName = 'eye';
     }
 
   }
