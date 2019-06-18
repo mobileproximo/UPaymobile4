@@ -7,11 +7,11 @@
     <h3 style="color:#639dd5; font-size:15px;font-weight:bold;" (click)="showPin()">{{ glb.HEADERTITELE.title }}</h3>
        <ion-buttons slot="primary">
           <ion-button style="margin-bottom: 5px;" (click)="showPin()" ion-margin shape="round" fill="solid" color="proximo">
-            <ion-icon  name="eye-off"></ion-icon>
+            <ion-icon  [name]="iconName"></ion-icon>
           </ion-button>
         </ion-buttons> 
       </ion-toolbar>
-    <div class="ion-padding p-container-view" *ngIf="!glb.ShowPin">
+    <div class="ion-padding p-container-view" *ngIf="!glb.ShowPin && showcodes">
         <ion-list style="margin-bottom: 50px;">
            <ion-item *ngFor="let c of mesCodes">
             <ion-avatar slot="start">
