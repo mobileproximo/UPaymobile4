@@ -34,7 +34,7 @@ import { OperatorImagePipe } from './pipes/operator-image.pipe';
     SplashScreen,
     ServiceService,
     Sim, MillierPipe, FormatphonePipe, AndroidPermissions,  FormatdatePipe, CoupurechainePipe,
-    GlobaleVariableService, Toast,  HTTP, OneSignal, Network, OperatorImagePipe,
+    GlobaleVariableService, Toast,  HTTP, OneSignal, Network, OperatorImagePipe, FormatcodePipe,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
