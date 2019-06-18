@@ -11,14 +11,34 @@ export class MescodesPage implements OnInit {
 
   constructor(public glb: GlobaleVariableService, public serv: ServiceService) { }
   public mesCodes: any = [];
+  public iconName: string ="eye";
+  public dataForPin: any ={}
   ngOnInit() {
     this.glb.ShowPin = false;
     this.glb.HEADERTITELE.src = this.glb.IMAGE_BASE_URL + 'Petite-Icon-06.png';
-    this.glb.HEADERTITELE.title = 'Mes codes de retrait';
+    this.glb.HEADERTITELE.title = 'Voir mes codes de retrait';
+    this.iconName = 'eye';
 
   }
   ionViewDidEnter(){
+
+  }
+  eventCapture(codePin: any) {
+    if (this.glb.modeTransactionnel) {
+      this.showCode();
+    }
+    this.glb.ShowPin = false;
+  }
+  showPin(){
+    this.dataForPin = {};
+    this.dataForPin.operation = 'Code de retrait UPay';
+    this.dataForPin.montant = ''
+    this.glb.modeTransactionnel = true;
+    this.glb.ShowPin = true;
+  }
+  showCode(){
     const parametres: any = {};
+    this.iconName = 'eye';
     parametres.idTerm = this.glb.IDTERM;
     parametres.session = this.glb.IDSESS;
     parametres.telephone = this.glb.PHONE;
@@ -27,6 +47,8 @@ export class MescodesPage implements OnInit {
       this.serv.dismissloadin();
       const reponse = JSON.parse(data.data);
       if (reponse.returnCode === '0') {
+        this.iconName = 'eye-off';
+        this.glb.HEADERTITELE.title = 'Mes codes de retrait'
         const codes = reponse.listCodeUpay.codeUpay;
         if (codes.length) {
         this.mesCodes = codes;

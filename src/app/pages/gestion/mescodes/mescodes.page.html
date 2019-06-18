@@ -1,10 +1,18 @@
 <app-header></app-header>
 
 <ion-content>
-    <header-title></header-title>
-    <div class="ion-padding p-container-view">
+    <ion-toolbar class="p-header-title">
+        <img class="p-header-img-service" [src]="glb.HEADERTITELE.src" alt="service">
+  
+    <h3 style="color:#639dd5; font-size:15px;font-weight:bold;" (click)="showPin()">{{ glb.HEADERTITELE.title }}</h3>
+       <ion-buttons slot="primary">
+          <ion-button style="margin-bottom: 5px;" (click)="showPin()" ion-margin shape="round" fill="solid" color="proximo">
+            <ion-icon  name="eye-off"></ion-icon>
+          </ion-button>
+        </ion-buttons> 
+      </ion-toolbar>
+    <div class="ion-padding p-container-view" *ngIf="!glb.ShowPin">
         <ion-list style="margin-bottom: 50px;">
-        
            <ion-item *ngFor="let c of mesCodes">
             <ion-avatar slot="start">
               <img src="assets/imgs/wallet.png" onerror="this.src='assets/imgs/upay.png';">
@@ -17,4 +25,6 @@
         </ion-list>
         
       </div>
+      <codepin class="p-box padding" *ngIf="glb.ShowPin" [inCommingData]="dataForPin" pagetitle="Entrer votre code Pin" (change)="eventCapture($event)"></codepin>
+
 </ion-content>

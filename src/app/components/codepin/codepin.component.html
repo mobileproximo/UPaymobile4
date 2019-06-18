@@ -10,7 +10,7 @@
                 <ion-label style="font-weight: bold;">{{inCommingData.telephone}} </ion-label>
             </ion-item>
         </span>
-          <ion-item lines="none" >
+          <ion-item lines="none" *ngIf="inCommingData.montant && inCommingData.montant!='RAS'" >
                 <ion-label>Montant TTC </ion-label>:
                 <ion-label style="font-weight: bold;">{{inCommingData.montant}}F CFA</ion-label>
           </ion-item>
