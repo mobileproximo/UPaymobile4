@@ -55,8 +55,12 @@ export class AppComponent {
 
         this.nav.pop();
     }); */
+    
     });
 
+  }
+  ionAlertDidDismiss(){
+    alert("alert quitté")
   }
   async presentAlert() {
     const alert = await this.alertController.create({
