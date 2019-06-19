@@ -123,7 +123,6 @@ export class ConnexionPage implements OnInit {
 
     });
 
-
   }
   verifConfPin() {
 

@@ -7,7 +7,7 @@ export class GlobaleVariableService {
   public showPin = false;
 public IMAGE_BASE_URL                 = 'assets/imgs/';
 public BASEURL                    = 'https://10.20.1.33:8080/upayMobile/';
-//public BASEURL                    = 'http://196.207.207.63:8080/upayMobile/';
+// public BASEURL                    = 'http://196.207.207.63:8080/upayMobile/';
 public IDPART                         = '';
 public IDSESS                         = '';
 public IDTERM                         = '';
@@ -31,7 +31,8 @@ public DATEREPRISE;
 public READCODEOTP = '';
 public PRENOM = 'DAME';
 public NOM = 'CAMARA';
-  PHONE: any;
+PHONE: any;
+isLoadingShowing = false;
   // tslint:disable-next-line: max-line-length
 public OperatorsImages = [{codeoper: '0054', image: this.IMAGE_BASE_URL + 'emoney.png', sousop: ''}, {codeoper: '0025', image: this.IMAGE_BASE_URL + 'omoney.png', sousop: ''},
 // tslint:disable-next-line: max-line-length

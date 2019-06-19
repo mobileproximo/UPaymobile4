@@ -44,6 +44,7 @@ export class ServiceService {
         cssClass: 'custom-loader-class'
       }).then(a => {
         a.present().then(() => {
+          this.glb.isLoadingShowing = true
           console.log('presented');
           if (!this.loadingCtrl) {
             a.dismiss().then(() => console.log('abort presenting'));
@@ -56,6 +57,7 @@ export class ServiceService {
 
   async dismissloadin() {
     this.loading = false;
+    this.glb.isLoadingShowing = false;
     return await this.loadingCtrl.dismiss().then(() => console.log('dismissed'));
   }
   async presentLoading() {
@@ -130,6 +132,9 @@ export class ServiceService {
 
       buttons: ['OK']
     }).then(res => {
+      console.log("alert show");
+      if(this.glb.isLoadingShowing)
+      this.dismissloadin();
       res.present();
     });
 }

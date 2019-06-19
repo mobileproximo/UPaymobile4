@@ -31,13 +31,17 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.backgroundColorByHexString('#639dd5');
       this.platform.pause.subscribe(() => {
-
         this.glb.DATEPAUSE = new Date();
     });
       this.checkNetwork();
 
       /* this.splashScreen.hide(); */
-
+      document.addEventListener('ionAlertDidDismiss', (e) => {
+        console.log('didDismiss ' + JSON.stringify(e) );
+        /* if (this.glb.isLoadingShowing === true) {
+          this.glb.isLoadingShowing = false;
+        } */
+      });
       document.addEventListener('backbutton', () => {
           if (this.router.url === '/home') {
           this.presentAlert();
@@ -55,13 +59,11 @@ export class AppComponent {
 
         this.nav.pop();
     }); */
-    
+
     });
 
   }
-  ionAlertDidDismiss(){
-    alert("alert quitté")
-  }
+
   async presentAlert() {
     const alert = await this.alertController.create({
       header: 'UPay',
