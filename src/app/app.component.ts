@@ -72,12 +72,13 @@ export class AppComponent {
       buttons: [        {
         text: 'Non',
         role: 'cancel',
-        cssClass: 'secondary',
+        cssClass: 'rester',
         handler: (blah) => {
           console.log('Confirm Cancel: blah');
         }
       }, {
         text: 'oui',
+        cssClass: 'quitter',
         handler: () => {
 
 // tslint:disable-next-line: no-string-literal
