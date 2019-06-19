@@ -9,8 +9,7 @@ const routes: Routes = [
   { path: 'paiement', loadChildren: './pages/paiement/paiement.module#PaiementPageModule' },
   { path: 'connexion', loadChildren: './pages/connexion/connexion.module#ConnexionPageModule' },
   { path: 'transfert', loadChildren: './pages/transfert/transfert.module#TransfertPageModule' },
-  { path: 'gestion', loadChildren: './pages/gestion/gestion.module#GestionPageModule' },
-
+  { path: 'gestion', loadChildren: './pages/gestion/gestion.module#GestionPageModule' }
 ];
 @NgModule({
   imports: [

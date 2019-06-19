@@ -13,6 +13,7 @@ import { EmoneyPage } from './emoney/emoney.page';
 import { PostcashPage } from './postcash/postcash.page';
 import { TigocashPage } from './tigocash/tigocash.page';
 import { UpayWalletPage } from './upay-wallet/upay-wallet.page';
+import { TransfertUniteValeurPage } from './transfert-unite-valeur/transfert-unite-valeur.page';
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: 'upaywallet',
     component: UpayWalletPage
+  },
+  {
+    path: 'transfertuv',
+    component: TransfertUniteValeurPage
   }
 ];
 
@@ -51,6 +56,6 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [MonnaiePage, OrangeMoneyPage, EmoneyPage, PostcashPage, WizallPage, TigocashPage, UpayWalletPage]
+  declarations: [MonnaiePage, OrangeMoneyPage, EmoneyPage, PostcashPage, WizallPage, TigocashPage, UpayWalletPage, TransfertUniteValeurPage]
 })
 export class MonnaiePageModule {}

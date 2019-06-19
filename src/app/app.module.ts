@@ -23,7 +23,7 @@ import { FormatdatePipe } from './pipes/formatdate.pipe';
 import { FormatcodePipe } from './pipes/formatcode.pipe';
 import { CoupurechainePipe } from './pipes/coupurechaine.pipe';
 import { OperatorImagePipe } from './pipes/operator-image.pipe';
-
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 
 @NgModule({
@@ -34,7 +34,7 @@ import { OperatorImagePipe } from './pipes/operator-image.pipe';
     SplashScreen,
     ServiceService,
     Sim, MillierPipe, FormatphonePipe, AndroidPermissions,  FormatdatePipe, CoupurechainePipe,
-    GlobaleVariableService, Toast,  HTTP, OneSignal, Network, OperatorImagePipe, FormatcodePipe,
+    GlobaleVariableService, Toast,  HTTP, OneSignal, Network, OperatorImagePipe, FormatcodePipe, CallNumber,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

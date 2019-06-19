@@ -12,8 +12,8 @@ import { Storage } from '@ionic/storage';
 })
 export class CashinAvecReleveComponent implements OnInit {
 
-  private rechargeForm: FormGroup;
-  private montantrelve;
+  public rechargeForm: FormGroup;
+  public montantrelve;
 @Input('cashindata') cashindata;
 dataForPin: any = {};
 ngOnInit() {}
@@ -47,6 +47,7 @@ ngOnInit() {}
     data.session = this.glb.IDSESS;
     this.serv.afficheloading();
     const file = data.recharge.oper === '0074' ? 'initcashoutUpay.php' : 'relevecashinwizall.php';
+
     this.serv.posts('recharge/' + file, data, {}).then(reponse => {
       this.serv.dismissloadin();
       const rep: any = JSON.parse(reponse.data);
@@ -87,7 +88,6 @@ ngOnInit() {}
     }
 
     this.glb.ShowPin = true;
-
   }
   changetel() {
     console.log('change');
