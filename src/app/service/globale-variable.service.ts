@@ -35,6 +35,7 @@ public PRENOM = 'DAME';
 public NOM = 'CAMARA';
 PHONE: any;
 isLoadingShowing = false;
+isErrorShowing = false;
   // tslint:disable-next-line: max-line-length
 public OperatorsImages = [{codeoper: '0054', image: this.IMAGE_BASE_URL + 'emoney.png', sousop: ''}, {codeoper: '0025', image: this.IMAGE_BASE_URL + 'omoney.png', sousop: ''},
 // tslint:disable-next-line: max-line-length

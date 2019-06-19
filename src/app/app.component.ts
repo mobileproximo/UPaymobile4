@@ -38,8 +38,8 @@ export class AppComponent {
       /* this.splashScreen.hide(); */
       document.addEventListener('ionAlertDidDismiss', (e) => {
         console.log('didDismiss ' + JSON.stringify(e) );
-        /* if (this.glb.isLoadingShowing === true) {
-          this.glb.isLoadingShowing = false;
+/*         if (this.glb.isErrorShowing === true) {
+          this.glb.isErrorShowing = false;
         } */
       });
       document.addEventListener('backbutton', () => {

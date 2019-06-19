@@ -10,6 +10,7 @@ import { MillierPipe } from 'src/app/pipes/millier.pipe';
 import { Sim } from '@ionic-native/sim/ngx';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { FormatphonePipe } from 'src/app/pipes/formatphone.pipe';
 
 @Component({
   selector: 'app-connexion',
@@ -20,18 +21,19 @@ export class ConnexionPage implements OnInit {
   public Userdata: FormGroup;
   datapin: any = {};
   toclear = false;
-  private isconform = false;
+  public isconform = false;
   message: string;
 
-  constructor(private storage: Storage, public glb: GlobaleVariableService,
-              private serv: ServiceService, private formBuilder: FormBuilder,
-              private navCtrl: NavController,
-              private router: Router,
-              private platform: Platform,
-              private monmillier: MillierPipe,
-              private sim: Sim,
-              private oneSignal: OneSignal,
+  constructor(public storage: Storage, public glb: GlobaleVariableService,
+              public serv: ServiceService, public formBuilder: FormBuilder,
+              public navCtrl: NavController,
+              public router: Router,
+              public platform: Platform,
+              public monmillier: MillierPipe,
+              public sim: Sim,
+              public oneSignal: OneSignal,
               public splashScreen: SplashScreen,
+              public formatphone: FormatphonePipe,
               public androidPermissions: AndroidPermissions) {
                 this.Userdata = this.formBuilder.group({
       login: ['', Validators.required],
@@ -160,6 +162,8 @@ export class ConnexionPage implements OnInit {
    // this.Userdata.controls.login.setValue('221' + this.Userdata.controls.login.value);
     const userdata = this.Userdata.getRawValue();
     userdata.login = '221' + this.Userdata.controls.login.value;
+    userdata.login = userdata.login.replace(/-/g, '');
+    console.log(JSON.stringify(userdata));
     this.serv.afficheloading();
     this.serv.posts('connexion/generateOTP.php', userdata, {}).then(data => {
       this.serv.dismissloadin();
@@ -254,6 +258,27 @@ export class ConnexionPage implements OnInit {
       () => this.serv.showError('Vous devez activer les autorisations')
     );
 
+  }
+  focustel() {
+    console.log('focus');
+    if (this.Userdata.controls.login.value) {
+      this.Userdata.controls.login.setValue(this.Userdata.controls.login.value.replace(/ /g, ''));
+      this.Userdata.controls.login.setValue(this.Userdata.controls.login.value.replace(/-/g, ''));
+
+    }
+  }
+  blurtel() {
+
+   this.Userdata.controls.login.setValue(this.formatphone.transform(this.Userdata.controls.login.value));
+
+  }
+    changetel() {
+    console.log('change');
+    this.Userdata.controls.login.setValue(this.Userdata.controls.login.value.replace(/ /g, ''));
+    this.Userdata.controls.login.setValue(this.Userdata.controls.login.value.replace(/-/g, ''));
+    if (this.Userdata.controls.login.value.length > 9) {
+      this.Userdata.controls.login.setValue(this.Userdata.controls.login.value.substring(0, 9));
+    }
   }
 
 }

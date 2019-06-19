@@ -36,7 +36,10 @@ export class ServiceService {
   }
   async afficheloading() {
    // this.checkNetwork();
-    if (this.glb.ISCONNECTED === true) {
+   console.log('afficheloading this.glb.isErrorShowing ' + this.glb.isErrorShowing);
+
+  // if (this.glb.ISCONNECTED === true && this.glb.isErrorShowing === false) {
+   if (this.glb.ISCONNECTED === true ) {
       this.loading = true;
       return await this.loadingCtrl.create({
         message: 'Veuillez patienter ...',
@@ -44,9 +47,9 @@ export class ServiceService {
         cssClass: 'custom-loader-class'
       }).then(a => {
         a.present().then(() => {
-          this.glb.isLoadingShowing = true
-          console.log('presented');
-          if (!this.loadingCtrl) {
+          this.glb.isLoadingShowing = true;
+          console.log('presented loading');
+          if (!this.loading ) {
             a.dismiss().then(() => console.log('abort presenting'));
           }
         });
@@ -56,9 +59,12 @@ export class ServiceService {
   }
 
   async dismissloadin() {
-    this.loading = false;
-    this.glb.isLoadingShowing = false;
-    return await this.loadingCtrl.dismiss().then(() => console.log('dismissed'));
+  //  if (this.glb.isLoadingShowing) {
+      this.loading = false;
+      this.glb.isLoadingShowing = false ;
+      return await this.loadingCtrl.dismiss().then(() => console.log('dismissed loading'));
+  //  }
+
   }
   async presentLoading() {
     const loading = await this.loadingCtrl.create({
@@ -129,12 +135,14 @@ export class ServiceService {
       header: 'UPay',
       message: text,
       cssClass : 'alertDanger',
-
       buttons: ['OK']
     }).then(res => {
-      console.log("alert show");
-      if(this.glb.isLoadingShowing)
+      this.glb.isErrorShowing = true;
+      console.log('alert show this.glb.isLoadingShowing ' + this.glb.isLoadingShowing);
+      console.log('alert show this.glb.isErrorShowing ' + this.glb.isErrorShowing);
+      if (this.glb.isLoadingShowing === true) {
       this.dismissloadin();
+      }
       res.present();
     });
 }
@@ -230,7 +238,7 @@ recharger(datarecharge) {
 verificationnumero(telephone: any) {
   telephone = telephone.replace(/-/g, '');
   telephone = telephone.replace(/ /g, '');
-  console.log('telephone ' + telephone);
+ // console.log('telephone ' + telephone);
   const  numeroautorisé = ['77', '78', '70', '76'];
   const retour = numeroautorisé.indexOf(telephone.substring(0, 2));
   return retour === -1;
