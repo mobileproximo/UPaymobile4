@@ -246,7 +246,7 @@ export class ConnexionPage implements OnInit {
               }
             }).catch(error => {
               this.serv.dismissloadin();
-              this.serv.showError('Impossible d\'atteindre le serveur ');
+              this.serv.showError('Impossible d\'atteindre le serveur ' );
 
             });
 
