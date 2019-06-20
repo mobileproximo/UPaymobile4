@@ -213,6 +213,8 @@ export class ConnexionPage implements OnInit {
             });
             const params = this.Userdata.getRawValue();
             params.login = params.login.substring(0, 3) !== '221' ? '221' + params.login : params.login;
+            params.login = params.login.replace(/-/g, '');
+            params.login = params.login.replace(/ /g, '');
           //  alert(JSON.stringify(params));
             this.serv.afficheloading();
             this.serv.posts('connexion/connexion.php', params, {}).then(data => {
