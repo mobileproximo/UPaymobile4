@@ -8,6 +8,7 @@ import { SenelecPage } from './senelec/senelec.page';
 import { SdePage } from './sde/sde.page';
 import { WoyofalPage } from './woyofal/woyofal.page';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { HeaderComponent } from 'src/app/components/header/header.component';
 
 const routes: Routes = [
   {

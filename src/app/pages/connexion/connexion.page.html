@@ -18,7 +18,7 @@
 
                 <div style="display: flex;flex-direction: column">
                         <div style="flex: 1" class="field">
-                                <input type="tel" style="border: none; border-bottom: 2px solid #639dd5; width: 100% !important; height:40px;" (input)="changetel()" (blur)="blurtel()"  (focus)="focustel()"  name="login" id="login" formControlName="login"  placeholder="Téléphone">
+                                <input type="tel" (input)="changetel()" (blur)="blurtel()"  (focus)="focustel()" style="border: none; border-bottom: 2px solid #639dd5; width: 100% !important; height:40px;" name="login" id="login" formControlName="login"  placeholder="Téléphone">
                                 <label for="login" style="width: 100% !important;">Téléphone</label>
                             </div>
                
@@ -45,11 +45,10 @@
 
             </div>
             <p style="color: #d50000;" *ngIf="!isconform">{{message}}</p>
-
             <div>
 <!--               <button (click)="generateOTPCode()"  [disabled]="!Userdata.valid || !isconform" class="p-btn p-btn-jaune button button-small button-block" style="margin-top: 35px;margin-bottom: 20px;font-size: 14px;">Suivant</button>
   -->  <!--            <button (click)="generateOTPCode()"   class="p-btn p-btn-jaune button button-small button-block" style="margin-top: 35px;margin-bottom: 20px;font-size: 14px;">Suivant</button>
- -->                    <ion-button style="color:white !important" [disabled]="!Userdata.valid || !isconform  || (Userdata.controls['login'].value.length <12) || (serv.verificationnumero(Userdata.controls['login'].value))"  Expand="block" (click)="generateOTPCode()" color="proximo">Suivant</ion-button>
+ -->                    <ion-button style="color:white !important" [disabled]="!Userdata.valid || !isconform || (Userdata.controls['login'].value.length <12) || (serv.verificationnumero(Userdata.controls['login'].value))"  Expand="block" (click)="generateOTPCode()" color="proximo">Suivant</ion-button>
 
                 <label style="text-align: center;display: block;" for="">En poursuivant vous recevrez sur votre téléphone un Sms contenant le code de vérification.  </label>
             </div>

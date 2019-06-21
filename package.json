@@ -24,6 +24,7 @@
     "@ionic-native/call-number": "^5.8.0",
     "@ionic-native/core": "^5.0.0",
     "@ionic-native/http": "^5.5.1",
+    "@ionic-native/ionic-webview": "^5.8.0",
     "@ionic-native/network": "^5.5.1",
     "@ionic-native/onesignal": "^5.5.1",
     "@ionic-native/sim": "^5.5.1",
@@ -93,9 +94,7 @@
       "cordova-plugin-statusbar": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
-      "cordova-plugin-ionic-webview": {
-        "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
-      },
+      "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
       "cordova-sqlite-storage": {},
       "cordova-plugin-android-permissions": {},
@@ -104,8 +103,8 @@
         "CHANNEL_NAME": "Production",
         "UPDATE_METHOD": "background"
       },
-      "mx.ferreyra.callnumber": {},
-      "cordova-plugin-sms": {}
+      "cordova-plugin-sms": {},
+      "mx.ferreyra.callnumber": {}
     },
     "platforms": [
       "android"

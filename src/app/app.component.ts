@@ -7,7 +7,8 @@ import { GlobaleVariableService } from './service/globale-variable.service';
 import { ServiceService } from './service/service.service';
 import { Router } from '@angular/router';
 import { Network } from '@ionic-native/network/ngx';
-
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+declare var SMS: any;
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
@@ -22,6 +23,7 @@ export class AppComponent {
     public navCtrl: NavController,
     public router: Router,
     public network: Network,
+    public androidPermissions: AndroidPermissions,
     public alertController: AlertController
   ) {
     this.initializeApp();
@@ -38,8 +40,8 @@ export class AppComponent {
       /* this.splashScreen.hide(); */
       document.addEventListener('ionAlertDidDismiss', (e) => {
         console.log('didDismiss ' + JSON.stringify(e) );
-/*         if (this.glb.isErrorShowing === true) {
-          this.glb.isErrorShowing = false;
+        /* if (this.glb.isLoadingShowing === true) {
+          this.glb.isLoadingShowing = false;
         } */
       });
       document.addEventListener('backbutton', () => {
@@ -47,6 +49,93 @@ export class AppComponent {
           this.presentAlert();
           }
         });
+      this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.READ_SMS).then(
+          result => {
+
+            // alert('Has permission? ' +JSON.stringify(result))
+            console.log('Has permission?', result.hasPermission);
+            if (!result.hasPermission) {
+              this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.READ_SMS).then(result => {
+
+              }).catch(err => {
+
+              });
+            }
+
+          },
+          err => {
+            alert('err ' + JSON.stringify(err));
+
+            this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.READ_SMS).then(result => {
+            //  alert('first request result ' +JSON.stringify(result));
+            }).catch(err => {
+             // alert('first request catch ' +JSON.stringify(err))
+
+            });
+          }
+        );
+/*       this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.READ_PHONE_STATE).then(
+          result => {
+
+            // alert('Has permission? ' +JSON.stringify(result))
+            console.log('Has permission?', result.hasPermission);
+            if (!result.hasPermission) {
+              this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.READ_PHONE_STATE).then(result => {
+
+              }).catch(err => {
+
+              });
+            }
+
+          },
+          err => {
+            alert('err ' + JSON.stringify(err));
+
+            this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.READ_PHONE_STATE).then(result => {
+            //  alert('first request result ' +JSON.stringify(result));
+            }).catch(err => {
+             // alert('first request catch ' +JSON.stringify(err))
+
+            });
+          }
+        );
+      if (( /(ipad|iphone|ipod|android)/i.test(navigator.userAgent) )) {
+
+          document.addEventListener('deviceready', function() {
+
+            if (!SMS ) { alert( 'SMS plugin not ready' ); return; } else {
+              SMS.startWatch(function() {
+
+              }, function() {
+                this.serv.showError('Impossible de lire L\'SMS de UPay');
+              });
+
+            }
+
+
+          }, false);
+        } else {
+          alert('need run on mobile device for full functionalities.');
+        }
+      document.addEventListener('onSMSArrive', (e: any) => {
+
+          const sms: any = e.data;
+          const expediteur = sms.address;
+          const message = sms.body;
+
+          if (expediteur === 'UPay') {
+            if (this.glb.READCODEOTP != message) {
+              // this.codeotp = message.substring(message.length - 4);
+              setTimeout(() => {
+              //  this.souscription();
+              }, 200);
+            }
+            this.glb.READCODEOTP = message;
+          }
+
+
+
+        }); */
 
 /*       this.platform.registerBackButtonAction(() => {
         if (this.nav.length() == 1) {
@@ -72,13 +161,12 @@ export class AppComponent {
       buttons: [        {
         text: 'Non',
         role: 'cancel',
-        cssClass: 'rester',
+        cssClass: 'secondary',
         handler: (blah) => {
           console.log('Confirm Cancel: blah');
         }
       }, {
         text: 'oui',
-        cssClass: 'quitter',
         handler: () => {
 
 // tslint:disable-next-line: no-string-literal
