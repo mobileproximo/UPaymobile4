@@ -64,8 +64,7 @@ export class TransfertUniteValeurPage implements OnInit {
   initier() {
     if (!this.service || this.service === '') {
       this.serv.showError('Selectionner un wallet');
-    }
-    else{
+    } else {
       if (this.service !== '0005') {
         this.serv.showAlert('Service en cours developpement');
       } else {
@@ -95,21 +94,27 @@ export class TransfertUniteValeurPage implements OnInit {
   const data: any = {};
   data.idTerm = this.glb.IDTERM;
   data.session = this.glb.IDSESS;
-
+  this.serv.afficheloading();
   this.serv.posts('recharge/initcashoutoper.php', params, {}).then(data => {
     const reponse = JSON.parse(data.data);
+    if (reponse.returnCode) {
+          if (reponse.returnCode === '0') {
+     // alert('initié' + JSON.stringify(reponse) );
+    } else {
+      this.serv.showError(reponse.errorLabel);
+    }
 
-    if (reponse.returnCode === '0') {
-      alert('initié' + JSON.stringify(reponse) );
-  } 
-  //dismisslogin
-  else {
-    this.serv.showError(reponse.errorLabel);
+  } else {
+    this.serv.showError('Reponse inattendue ');
   }
 }
   ).catch(err => {
-     //dismisslogin
-    this.serv.showError('INIT Impossible d\'atteindre le serveur ');
+    this.serv.dismissloadin();
+    if (err.status === 500) {
+    this.serv.showError('Une erreur interne s\'est produit ERREUR 500');
+    } else {
+    this.serv.showError('Impossible d\'atteindre le serveur veuillez réessayer' );
+    }
   });
 }
   }
@@ -122,14 +127,10 @@ export class TransfertUniteValeurPage implements OnInit {
 
         if (!SMS ) { alert( 'SMS plugin not ready' ); return; } else {
           SMS.startWatch(() => {
-
           }, () => {
             this.serv.showError('Impossible de lire L\'SMS de UPay');
           });
-
         }
-
-
       }, false);
     } else {
       alert('need run on mobile device for full functionalities.');
@@ -139,16 +140,16 @@ export class TransfertUniteValeurPage implements OnInit {
       const sms: any = e.data;
       const expediteur = sms.address.toUpperCase();
       const message = sms.body;
-      alert('Message ' + JSON.stringify(message));
+     // alert('Message ' + JSON.stringify(message));
       if (expediteur === 'ORANGEMONEY') {
-
         if (message.substr(0, 30) === 'Vous allez faire un retrait de') {
           // alert("vous avez reçu un sms de confirmation entrez votre code secret");
           setTimeout(() => {
             this.callNumber.callNumber('#144#', true)
             .then(res => {})
             .catch(err => {
-               //dismisslogin
+              this.serv.dismissloadin();
+               // dismisslogin
             });
           }, 200);
 
@@ -159,16 +160,13 @@ export class TransfertUniteValeurPage implements OnInit {
           }, 200);
         }
       }
-
-
-
     });
   }
   cashinUPay() {
     const parametres: any = {};
     parametres.recharge = {};
     parametres.recharge.montant   = this.rechargeForm.controls.montantrlv.value.replace(/ /g, '');
-    parametres.recharge.telephone = this.glb.PIN; // datarecharge.recharge.telephone.replace(/-/g, '');
+    parametres.recharge.telephone = this.glb.PHONE; // datarecharge.recharge.telephone.replace(/-/g, '');
    // parametres.recharge.telephone = parametres.recharge.telephone.replace(/ /g, '');
     if (parametres.recharge.frais) {
       parametres.recharge.frais = parametres.recharge.frais.replace(/ /g, '');
@@ -176,15 +174,26 @@ export class TransfertUniteValeurPage implements OnInit {
     parametres.idTerm = this.glb.IDTERM;
     parametres.session = this.glb.IDSESS;
     this.serv.posts('recharge/cashinUpay.php', parametres, {}).then(data => {
+      this.serv.dismissloadin();
       const reponse = JSON.parse(data.data);
-      if (reponse.returnCode === '0') {
+      if (reponse.returnCode) {
+        if (reponse.returnCode === '0') {
         alert('cashin UPAY' + JSON.stringify(reponse) );
     } else {
       this.serv.showError(reponse.errorLabel);
     }
+  } else {
+    this.serv.showError('Reponse inattendue  ' );
+  }
+
   }
     ).catch(err => {
-      this.serv.showError('INIT Impossible d\'atteindre le serveur ');
+      this.serv.dismissloadin();
+      if (err.status === 500) {
+      this.serv.showError('Une erreur interne s\'est produit ERREUR 500');
+      } else {
+      this.serv.showError('Impossible d\'atteindre le serveur veuillez réessayer' );
+      }
     });
   }
 

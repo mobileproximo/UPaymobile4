@@ -51,7 +51,8 @@ ngOnInit() {}
     this.serv.posts('recharge/' + file, data, {}).then(reponse => {
       this.serv.dismissloadin();
       const rep: any = JSON.parse(reponse.data);
-      if (rep.returnCode === '0') {
+      if (rep.returnCode) {
+              if (rep.returnCode === '0') {
         this.montantrelve = data.recharge.montant;
         const mntttc: any = rep.mntTarif * 1 + data.recharge.montant * 1;
         this.rechargeForm.controls.montant.setValue(this.millier.transform(mntttc));
@@ -69,9 +70,18 @@ ngOnInit() {}
         }
 
       } else { this.serv.showError(rep.errorLabel); }
+      } else {
+        this.serv.showError('Reponse inattendue');
+
+      }
+
     }).catch(err => {
         this.serv.dismissloadin();
-        this.serv.showError('Impossible d\'atteindre le serveur');
+        if (err.status === 500) {
+        this.serv.showError('Une erreur interne s\'est produite ERREUR 500');
+        } else {
+        this.serv.showError('Impossible d\'atteindre le serveur veuillez réessayer');
+        }
       }
     );
   }

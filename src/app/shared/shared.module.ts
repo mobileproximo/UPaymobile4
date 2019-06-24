@@ -24,13 +24,13 @@ import { FormatcodePipe } from '../pipes/formatcode.pipe';
                 CashinAvecReleveComponent, RecuRechargeComponent, ReceptionComponent,
                 CodepinComponent, EnvoiComponent, RecuTransfertComponent, RecuWoyofalComponent, RecuEncaissementComponent],
   imports: [
-    CommonModule, IonicModule, FormsModule, ReactiveFormsModule,
+    CommonModule, IonicModule, FormsModule, ReactiveFormsModule, 
   ],
   exports: [HeaderComponent,
             HeaderTitleComponent,
             FormsModule,
             ReactiveFormsModule,
-            CommonModule,
+            CommonModule, 
             IonicModule, ScrollComponent, FormatphonePipe, ReceptionComponent, FormatcodePipe,
             RechargeComponent, CashinAvecReleveComponent, MillierPipe, RecuWoyofalComponent, RecuEncaissementComponent,
             RecuRechargeComponent, CodepinComponent, EnvoiComponent, RecuTransfertComponent]

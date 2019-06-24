@@ -6,13 +6,14 @@ import { Injectable } from '@angular/core';
 export class GlobaleVariableService {
   public showPin = false;
 public IMAGE_BASE_URL                 = 'assets/imgs/';
+
 public BASEURL                    = 'https://mobile.upay.africa:8080/upayMobile/';
 public IDPART                         = '';
 public IDSESS                         = '';
 public IDTERM                         = '';
 public PIN                         = '';
 public ISCONNECTED = true;
-public HEADER: any     = {agence: '', montant: '', numcompte: '', consomme: ''};
+public HEADER: any     = {agence: '', montant: '0', numcompte: '', consomme: ''};
 public HEADERTITELE                   = {title : '', src: ''};
 public recu: any;
 public notfound               = false;

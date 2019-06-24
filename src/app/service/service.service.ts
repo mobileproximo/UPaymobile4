@@ -114,6 +114,7 @@ export class ServiceService {
       console.log(url);
       console.log(body);
       this.http.setDataSerializer('json');
+
       this.http.setSSLCertMode('nocheck');
       // this.http.setRequestTimeout(60);
       return this.http.post(url, body, headers);
@@ -204,7 +205,8 @@ recharger(datarecharge) {
   this.posts('recharge/' + file + '.php', parametres, {}).then(data => {
     this.dismissloadin();
     const reponse = JSON.parse(data.data);
-    if (reponse.returnCode === '0') {
+    if (reponse.returnCode) {
+          if (reponse.returnCode === '0') {
       this.glb.recu = reponse;
       if (typeof (reponse.telRech) === 'object') {
         this.glb.recu.telRech = datarecharge.recharge.telephone;
@@ -221,9 +223,17 @@ recharger(datarecharge) {
       this.glb.recu.Oper = datarecharge.operateur;
 
     } else { this.showError(reponse.errorLabel); }
+    } else {
+      this.showError('Reponse inattendue' );
+
+    }
+
   }).catch(err => {
-    this.dismissloadin();
-    this.showError('Impossible d\'atteindre le serveur');
+    if (err.status === 500) {
+      this.showError('Une erreur interne s\'est produite ERREUR 500');
+      } else {
+      this.showError('Impossible d\'atteindre le serveur veuillez réessayer');
+      }
 
   });
 
