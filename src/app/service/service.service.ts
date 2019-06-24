@@ -116,7 +116,7 @@ export class ServiceService {
       this.http.setDataSerializer('json');
 
       this.http.setSSLCertMode('nocheck');
-      // this.http.setRequestTimeout(60);
+      this.http.setRequestTimeout(90);
       return this.http.post(url, body, headers);
     }
 
