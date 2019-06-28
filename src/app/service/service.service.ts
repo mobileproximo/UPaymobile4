@@ -47,7 +47,10 @@ export class ServiceService {
           this.glb.isLoadingShowing = true;
           console.log('presented');
           if (!this.loading) {
-            a.dismiss().then(() => console.log('abort presenting'));
+            a.dismiss().then(() => {
+              console.log('abort presenting');
+              this.glb.isLoadingShowing = false;
+            });
           }
         });
       });
@@ -57,8 +60,9 @@ export class ServiceService {
 
   async dismissloadin() {
     this.loading = false;
-    this.glb.isLoadingShowing = false;
-    return await this.loadingCtrl.dismiss().then(() => console.log('dismissed'));
+    return await this.loadingCtrl.dismiss().then(() => {
+      this.glb.isLoadingShowing = false;
+      console.log('dismissed');});
   }
   async presentLoading() {
     const loading = await this.loadingCtrl.create({

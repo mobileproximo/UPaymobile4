@@ -23,6 +23,7 @@
     "@ionic-native/android-permissions": "^5.5.1",
     "@ionic-native/barcode-scanner": "^5.8.0",
     "@ionic-native/call-number": "^5.8.0",
+    "@ionic-native/contacts": "^5.8.0",
     "@ionic-native/core": "^5.0.0",
     "@ionic-native/http": "^5.5.1",
     "@ionic-native/ionic-webview": "^5.8.0",
@@ -38,17 +39,16 @@
     "cordova-android": "8.0.0",
     "cordova-plugin-advanced-http": "2.0.9",
     "cordova-plugin-android-permissions": "1.0.0",
+    "cordova-plugin-contacts": "^3.0.1",
     "cordova-plugin-file": "^6.0.1",
     "cordova-plugin-ionic": "5.3.0",
     "cordova-plugin-network-information": "2.0.1",
     "cordova-plugin-sim": "1.3.3",
-    "cordova-plugin-sms": "1.0.5",
     "cordova-plugin-x-toast": "2.7.2",
     "cordova-sqlite-storage": "3.2.0",
     "core-js": "^2.5.4",
     "ngx-qrcode2": "0.0.9",
     "onesignal-cordova-plugin": "2.4.7",
-    "phonegap-plugin-barcodescanner": "8.0.1",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.29"
@@ -106,11 +106,8 @@
         "CHANNEL_NAME": "Production",
         "UPDATE_METHOD": "background"
       },
-      "cordova-plugin-sms": {},
       "mx.ferreyra.callnumber": {},
-      "phonegap-plugin-barcodescanner": {
-        "ANDROID_SUPPORT_V4_VERSION": "27.+"
-      }
+      "cordova-plugin-contacts": {}
     },
     "platforms": [
       "android"
