@@ -35,7 +35,7 @@ export class ConnexionPage implements OnInit {
               public splashScreen: SplashScreen,
               public formatphone: FormatphonePipe,
               public androidPermissions: AndroidPermissions) {
-                this.Userdata = this.formBuilder.group({
+              this.Userdata = this.formBuilder.group({
       login: ['', Validators.required],
       codepin: ['', Validators.required],
       confpin: ['', Validators.required],
@@ -43,7 +43,8 @@ export class ConnexionPage implements OnInit {
       nom: ['', Validators.required],
       imei: [''],
       idSim1: [''],
-      idSim2: ['']
+      idSim2: [''],
+      mode: ['S']
     });
   }
 
@@ -64,7 +65,6 @@ export class ConnexionPage implements OnInit {
           this.glb.ShowPin = true;
           this.glb.modeTransactionnel = true;
         }
-
       });
    // this.getPermission();
   }
